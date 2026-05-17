@@ -1,62 +1,719 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kartikey | Pharma Portfolio</title>
-<style>
-body{font-family:Arial;margin:0;background:linear-gradient(135deg,#f4f8ff,#dbeafe);color:#222}
-nav{position:sticky;top:0;background:#fff;padding:15px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-.hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;padding:50px}
-.card{background:rgba(255,255,255,.8);backdrop-filter:blur(10px);padding:25px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.1)}
-img{width:260px;height:260px;border-radius:50%;object-fit:cover;border:5px solid #2563eb}
-.btn{display:inline-block;padding:12px 20px;background:#2563eb;color:white;text-decoration:none;border-radius:10px;margin:5px}
-.section{padding:40px}
-.skill{margin:10px 0}
-.bar{height:10px;background:#ddd;border-radius:20px}
-.fill{height:10px;background:#2563eb;border-radius:20px}
-footer{text-align:center;padding:20px;background:#fff}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartikey | B.Pharm Graduate Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        pharma: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#025a91',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism Styles */
+        .glass {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-icon:nth-child(2) { animation-delay: 1.5s; }
+        .floating-icon:nth-child(3) { animation-delay: 3s; }
+        .floating-icon:nth-child(4) { animation-delay: 4.5s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #0284c7; border-radius: 4px; }
+        
+        /* Typing cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
 </head>
-<body>
-<nav><b>Kartikey | B.Pharm Portfolio</b></nav>
+<body class="bg-gradient-to-tr from-pharma-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-200 min-h-screen transition-colors duration-300">
 
-<section class="hero">
-<div style="padding:20px"><img src="profile.png"></div>
-<div class="card">
-<h1>Kartikey</h1>
-<h3>B.Pharm Fresher | Production & QA Aspirant</h3>
-<p>Passionate B.Pharm fresher interested in Pharmaceutical Production and Quality Assurance.</p>
-<a class="btn" href="resume.pdf" download>Download Resume</a>
-<a class="btn" href="mailto:kartikeyk47@gmail.com">Contact Me</a>
-</div>
-</section>
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 bg-white dark:bg-slate-950 flex flex-col justify-center items-center">
+        <div class="relative w-24 h-24 flex items-center justify-center">
+            <i class="fa-solid fa-flask-vial text-5xl text-pharma-500 animate-pulse"></i>
+            <div class="absolute inset-0 border-4 border-pharma-100 border-t-pharma-500 rounded-full animate-spin"></div>
+        </div>
+        <p class="mt-4 text-sm font-semibold tracking-wider text-pharma-600 dark:text-pharma-400">LOADING ECOSYSTEM...</p>
+    </div>
 
-<div class="section">
-<h2>About Me</h2>
-<ul>
-<li>Quick Learner</li>
-<li>Production & QA Basics</li>
-<li>MS Office</li>
-<li>Hospital Training - 3 Months</li>
-</ul>
-</div>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 z-40 hidden p-3 rounded-full bg-pharma-500 text-white shadow-lg hover:bg-pharma-600 transition-all transform hover:scale-110">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-<div class="section">
-<h2>Skills</h2>
-<div class="skill">GMP<div class="bar"><div class="fill" style="width:85%"></div></div></div>
-<div class="skill">SOP<div class="bar"><div class="fill" style="width:80%"></div></div></div>
-<div class="skill">Documentation<div class="bar"><div class="fill" style="width:75%"></div></div></div>
-</div>
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 w-full z-40 transition-all duration-300 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="glass rounded-2xl px-6 py-3 flex items-center justify-between shadow-sm">
+                <a href="#" class="text-xl font-extrabold tracking-tight text-pharma-600 dark:text-pharma-500">
+                    KARTIKEY<span class="text-slate-800 dark:text-white">.Pharma</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6 font-medium text-sm">
+                    <a href="#home" class="nav-link text-pharma-500 hover:text-pharma-600 transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-pharma-500 transition-colors">About</a>
+                    <a href="#education" class="nav-link hover:text-pharma-500 transition-colors">Education</a>
+                    <a href="#skills" class="nav-link hover:text-pharma-500 transition-colors">Skills</a>
+                    <a href="#experience" class="nav-link hover:text-pharma-500 transition-colors">Training</a>
+                    <a href="#resume" class="nav-link hover:text-pharma-500 transition-colors">Resume</a>
+                    <a href="#contact" class="nav-link hover:text-pharma-500 transition-colors">Contact</a>
+                </div>
 
-<div class="section">
-<h2>Contact</h2>
-<p>📞 7607573930</p>
-<p>✉ kartikeyk47@gmail.com</p>
-<p>📍 Kanpur / Uttar Pradesh</p>
-<p><a href="https://www.linkedin.com/in/kartikey-patel-74b113361">LinkedIn</a></p>
-</div>
+                <!-- Action Items -->
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block"></i>
+                    </button>
+                    <a href="#contact" class="hidden sm:inline-block bg-pharma-500 text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-pharma-600 shadow-md shadow-pharma-500/20 transition-all">Hire Me</a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden mx-4 mt-2 p-4 glass rounded-2xl shadow-xl flex flex-col space-y-3 font-medium md:hidden">
+            <a href="#home" class="mobile-nav-link py-2 border-b border-slate-100 dark:border-slate-800">Home</a>
+            <a href="#about" class="mobile-nav-link py-2 border-b border-slate-100 dark:border-slate-800">About</a>
+            <a href="#education" class="mobile-nav-link py-2 border-b border-slate-100 dark:border-slate-800">Education</a>
+            <a href="#skills" class="mobile-nav-link py-2 border-b border-slate-100 dark:border-slate-800">Skills</a>
+            <a href="#experience" class="mobile-nav-link py-2 border-b border-slate-100 dark:border-slate-800">Training</a>
+            <a href="#resume" class="mobile-nav-link py-2 border-b border-slate-100 dark:border-slate-800">Resume</a>
+            <a href="#contact" class="mobile-nav-link py-2">Contact</a>
+        </div>
+    </header>
 
-<footer>© 2026 Kartikey | Pharma Portfolio</footer>
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-screen flex items-center">
+        <!-- Floating Icons Background Element -->
+        <div class="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10 z-0">
+            <i class="fa-solid fa-capsules text-6xl text-pharma-500 absolute top-1/4 left-10 floating-icon"></i>
+            <i class="fa-solid fa-dna text-7xl text-blue-600 absolute top-1/3 right-12 floating-icon"></i>
+            <i class="fa-solid fa-flask text-6xl text-cyan-500 absolute bottom-1/4 left-1/4 floating-icon"></i>
+            <i class="fa-solid fa-briefcase-medical text-5xl text-red-500 absolute bottom-1/3 right-1/4 floating-icon"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <!-- Left Details -->
+                <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-pharma-100 text-pharma-700 dark:bg-pharma-900/50 dark:text-pharma-400 inline-block">
+                        Ready for Industry Challenges
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                        Hi, I am <span class="text-pharma-500 block sm:inline">Kartikey</span>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-slate-600 dark:text-slate-400 h-16">
+                        <span id="typedTitle" class="typing-cursor border-pharma-500 text-slate-800 dark:text-slate-200"></span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mx-auto md:mx-0">
+                        I am a passionate B.Pharm graduate interested in pharmaceutical production and quality assurance. I aim to apply my academic knowledge, practical training, and problem-solving skills in the pharmaceutical industry while continuously learning and contributing to organizational growth.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                        <a href="#resume" class="bg-pharma-500 text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-pharma-500/20 hover:bg-pharma-600 hover:-translate-y-0.5 transition-all w-full sm:w-auto text-center">
+                            <i class="fa-solid fa-file-arrow-down mr-2"></i> Download Resume
+                        </a>
+                        <a href="#contact" class="glass text-slate-800 dark:text-white px-6 py-3.5 rounded-xl font-semibold hover:bg-slate-50 dark:hover:bg-slate-900 hover:-translate-y-0.5 transition-all w-full sm:w-auto text-center">
+                            Contact Me
+                        </a>
+                        <a href="#projects" class="text-pharma-500 font-semibold hover:text-pharma-600 flex items-center justify-center gap-2 w-full sm:w-auto group">
+                            View Projects <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Right Image Container -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                        <!-- Background Decorative Glass Ring -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-pharma-400 to-blue-600 rounded-full animate-spin [animation-duration:20s] opacity-30 blur-sm"></div>
+                        <div class="absolute inset-3 glass rounded-full flex items-center justify-center overflow-hidden p-3 shadow-inner">
+                            <!-- Placeholder Graphic Image for Freshers -->
+                            <div class="w-full h-full rounded-full bg-gradient-to-b from-pharma-100 to-pharma-500/20 flex flex-col items-center justify-center text-pharma-600 dark:text-pharma-400 p-6 text-center">
+                                <i class="fa-solid fa-user-doctor text-7xl mb-4 opacity-80"></i>
+                                <span class="font-bold tracking-wide uppercase text-xs">Kartikey</span>
+                                <span class="text-[10px] opacity-70">B.Pharm Specialist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-white/50 dark:bg-slate-900/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-slate-900 dark:text-white">About Me</h2>
+                <div class="h-1 w-20 bg-pharma-500 mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">A reliable professional equipped with structural knowledge of pharmaceuticals, ready to deploy values inside active compliance ecosystems.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Cards -->
+                <div class="glass p-6 rounded-2xl hover:scale-[1.03] transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Completed B.Pharm</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Deep foundational awareness regarding core medicinal compounds, anatomy, and standard industry frameworks.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl hover:scale-[1.03] transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-900/50 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-4">
+                            <i class="fa-solid fa-industry text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Production & QA Focused</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Eager to operate within active batch processing systems, formulation units, and standard verification tracks.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl hover:scale-[1.03] transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Quick Learner & Motivated</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Capable of assimilating site operating procedures, machine operational logs, and regulatory rules swiftly.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl hover:scale-[1.03] transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
+                            <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Attention to Detail</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Precise management approach towards log entries, analytical verification parameters, and safety metrics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section id="education" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-slate-900 dark:text-white">Education Track</h2>
+                <div class="h-1 w-20 bg-pharma-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto relative border-l-2 border-pharma-200 dark:border-slate-800 ml-4 sm:ml-auto">
+                <!-- Timeline Block -->
+                <div class="mb-10 ml-6 relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-pharma-500 border-4 border-white dark:border-slate-950"></div>
+                    <span class="text-xs font-bold text-pharma-600 dark:text-pharma-400 tracking-wider uppercase">Graduation Horizon</span>
+                    <h3 class="text-xl font-bold mt-1 text-slate-900 dark:text-white">Bachelor of Pharmacy (B.Pharm)</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Affiliated Technical University / Institutional College Ecosystem</p>
+                    <p class="text-sm text-slate-400 mb-4">Kanpur Region, Uttar Pradesh</p>
+                    
+                    <!-- Performance Metrics Display -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="glass p-4 rounded-xl">
+                            <span class="text-xs text-slate-500 block">7th Semester Result</span>
+                            <span class="text-2xl font-extrabold text-pharma-500">7.41 <span class="text-xs font-medium text-slate-400">SGPA</span></span>
+                        </div>
+                        <div class="glass p-4 rounded-xl">
+                            <span class="text-xs text-slate-500 block">Target Cumulative Milestone</span>
+                            <span class="text-2xl font-extrabold text-slate-700 dark:text-slate-300">7.50 + <span class="text-xs font-medium text-slate-400">CGPA Goal</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white/50 dark:bg-slate-900/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-slate-900 dark:text-white">Professional Skillset</h2>
+                <div class="h-1 w-20 bg-pharma-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Technical Core -->
+                <div class="glass p-8 rounded-2xl space-y-6">
+                    <h3 class="text-xl font-bold flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                        <i class="fa-solid fa-vial-circle-check text-pharma-500"></i> Domain & Technical Skills
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1 font-medium">
+                                <span>Good Manufacturing Practices (GMP) Awareness</span>
+                                <span>Advanced Baseline</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-pharma-500 h-full rounded-full w-[85%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1 font-medium">
+                                <span>Standard Operating Procedures (SOP) & Logging</span>
+                                <span>Strong Baseline</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-pharma-500 h-full rounded-full w-[80%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1 font-medium">
+                                <span>Quality Assurance Basics & Audit Readiness</span>
+                                <span>Competent</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-pharma-500 h-full rounded-full w-[75%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1 font-medium">
+                                <span>MS Office Suite (Excel, Word, PowerPoint)</span>
+                                <span>Proficient</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-pharma-500 h-full rounded-full w-[90%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills Profile -->
+                <div class="glass p-8 rounded-2xl space-y-6">
+                    <h3 class="text-xl font-bold flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                        <i class="fa-solid fa-users-gear text-emerald-500"></i> Corporate & Soft Skills
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
+                            <i class="fa-solid fa-comments text-emerald-500 mb-2"></i>
+                            <h4 class="font-bold text-sm">Clear Communication</h4>
+                            <p class="text-xs text-slate-500 mt-1">Precise alignment with multi-tier industrial teams.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
+                            <i class="fa-solid fa-people-group text-blue-500 mb-2"></i>
+                            <h4 class="font-bold text-sm">Team Synchronization</h4>
+                            <p class="text-xs text-slate-500 mt-1">Collaborative operational approach inside batch ecosystems.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
+                            <i class="fa-solid fa-puzzle-piece text-amber-500 mb-2"></i>
+                            <h4 class="font-bold text-sm">Problem Diagnostics</h4>
+                            <p class="text-xs text-slate-500 mt-1">Analytical handling of unexpected batch deviations.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
+                            <i class="fa-solid fa-sliders text-purple-500 mb-2"></i>
+                            <h4 class="font-bold text-sm">Dynamic Adaptability</h4>
+                            <p class="text-xs text-slate-500 mt-1">Comfortable adapting to shift schedules and regulations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section id="experience" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sm font-bold text-pharma-500 tracking-wider uppercase">Practical Groundwork</span>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-slate-900 dark:text-white mt-1">Hospital Training (3 Months)</h2>
+                <div class="h-1 w-20 bg-pharma-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards -->
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start">
+                    <div class="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl text-blue-600 dark:text-blue-400 shrink-0">
+                        <i class="fa-solid fa-prescription-bottle-medical text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1">Pharmaceutical Practices</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Acquired direct experience tracking inventory, dispensing frameworks, and compound classifications.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start">
+                    <div class="p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl text-cyan-600 dark:text-cyan-400 shrink-0">
+                        <i class="fa-solid fa-hospital-user text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1">Patient Interaction</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Developed strong professional etiquette explaining prescription guidelines and dosage intervals.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start">
+                    <div class="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl text-emerald-600 dark:text-emerald-400 shrink-0">
+                        <i class="fa-solid fa-folder-open text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1">Documentation Handling</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Maintained clear drug log records aligned with standard healthcare compliance structures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Projects Section -->
+    <section id="projects" class="py-20 bg-white/50 dark:bg-slate-900/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+            <!-- Certifications Module -->
+            <div>
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Credentials & Certifications</h2>
+                    <div class="h-1 w-16 bg-pharma-500 mx-auto mt-3 rounded-full"></div>
+                </div>
+                
+                <div class="max-w-2xl mx-auto">
+                    <div class="glass p-6 sm:p-8 rounded-2xl border-l-4 border-emerald-500 relative overflow-hidden group">
+                        <div class="absolute -right-8 -bottom-8 text-9xl text-slate-100 dark:text-slate-900 pointer-events-none transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-start justify-between gap-4 relative z-10">
+                            <div>
+                                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-1 rounded-md">Verified Academic Track</span>
+                                <h3 class="text-xl font-bold text-slate-950 dark:text-white mt-2">Thinking Critically: Interpreting Randomized Clinical Trials</h3>
+                                <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mt-1">Stanford University School of Medicine</p>
+                                <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Credential Scope: 2 AMA PRA Category 1 Credits™
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic / Formulation Research Projects -->
+            <div>
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Academic Formulation Highlights</h2>
+                    <div class="h-1 w-16 bg-pharma-500 mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="max-w-2xl mx-auto">
+                    <div class="glass rounded-2xl overflow-hidden group shadow-md">
+                        <!-- Project Graphic representation -->
+                        <div class="bg-gradient-to-r from-pharma-500 to-blue-600 p-8 text-white relative">
+                            <i class="fa-solid fa-mortar-pestle text-6xl absolute right-6 bottom-4 opacity-15"></i>
+                            <h3 class="text-2xl font-bold max-w-md">Cosmetics & Cosmeceuticals Analysis</h3>
+                            <p class="text-xs opacity-75 mt-1">Comprehensive Structural Portfolio Guide</p>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                A meticulous academic project report analyzing cosmetic and cosmeceutical classifications, legal boundary lines, regional therapeutic parameters, and market implications.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-medium px-2.5 py-1 glass rounded-md">Regulatory Science</span>
+                                <span class="text-xs font-medium px-2.5 py-1 glass rounded-md">Classification Matrices</span>
+                                <span class="text-xs font-medium px-2.5 py-1 glass rounded-md">Therapeutic Evaluation</span>
+                            </div>
+                            <button class="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pharma-500 hover:text-white dark:hover:bg-pharma-500 font-semibold text-sm transition-all">
+                                View Details Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Metrics / Achievements -->
+    <section class="py-16 bg-gradient-to-r from-pharma-600 to-blue-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <span class="text-3xl sm:text-4xl font-extrabold block" data-target="1">0</span>
+                    <span class="text-xs tracking-wider uppercase opacity-80 block font-medium">Verified Core Certifications</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-3xl sm:text-4xl font-extrabold block" data-target="3">0</span>
+                    <span class="text-xs tracking-wider uppercase opacity-80 block font-medium">Months Industrial Training</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-3xl sm:text-4xl font-extrabold block" data-target="100">0</span>
+                    <span class="text-xs tracking-wider uppercase opacity-80 block font-medium">% Dedication Level</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-3xl sm:text-4xl font-extrabold block" data-target="4">0</span>
+                    <span class="text-xs tracking-wider uppercase opacity-80 block font-medium">Years Academic Mastery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Module -->
+    <section id="resume" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Curriculum Vitae</h2>
+                <div class="h-1 w-20 bg-pharma-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto glass p-6 sm:p-10 rounded-3xl shadow-xl space-y-8">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
+                    <div>
+                        <h3 class="text-2xl font-extrabold">Kartikey</h3>
+                        <p class="text-sm font-semibold text-pharma-600 dark:text-pharma-400">B.Pharm Graduate | Production & QA Aspirant</p>
+                    </div>
+                    <a href="#" class="bg-pharma-500 text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-pharma-600 shadow-md transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-file-arrow-down"></i> Download ATS Document
+                    </a>
+                </div>
+
+                <!-- ATS Interactive Wireframe Representation -->
+                <div class="space-y-6 opacity-80 text-sm">
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-xs uppercase tracking-wider text-pharma-500">Professional Summary</h4>
+                        <p class="leading-relaxed">Motivated Bachelor of Pharmacy graduate prepared to leverage precise analytical insight, basic compliance knowledge of GMP guidelines, and verified structured training records in entry-level corporate production or verification cycles.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-xs uppercase tracking-wider text-pharma-500">Core Exposure Metrics</h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                            <li>Foundational familiarity with operational tracking inside drug production facilities.</li>
+                            <li>Clear processing understanding of clinical documentation and medical compliance rules.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white/50 dark:bg-slate-900/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Connect with Me</h2>
+                <div class="h-1 w-20 bg-pharma-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Contact Details Grid Container -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="glass p-5 rounded-2xl flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Phone Reachout</span>
+                            <a href="tel:+917607573930" class="text-sm font-bold hover:text-pharma-500 transition-colors">+91 7607573930</a>
+                        </div>
+                    </div>
+
+                    <div class="glass p-5 rounded-2xl flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-900/50 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Email Queries</span>
+                            <a href="mailto:kartikeyk47@gmail.com" class="text-sm font-bold hover:text-pharma-500 transition-colors">kartikeyk47@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="glass p-5 rounded-2xl flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block">Base Location</span>
+                            <span class="text-sm font-bold">Kanpur Nagar, Uttar Pradesh, India</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Vectors links -->
+                    <div class="glass p-5 rounded-2xl flex justify-center gap-6 text-xl">
+                        <a href="#" class="hover:text-pharma-500 transition-transform hover:scale-110"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-pharma-500 transition-transform hover:scale-110"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Live Interface Interactive Message Form Formulator -->
+                <div class="lg:col-span-7">
+                    <form class="glass p-6 sm:p-8 rounded-2xl space-y-4" onsubmit="event.preventDefault(); alert('Message sent successfully to Kartikey!');">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-xs font-semibold text-slate-500">Your Identity</label>
+                                <input type="text" placeholder="Full Name" required class="w-full p-3 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:border-pharma-500">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs font-semibold text-slate-500">Email Address</label>
+                                <input type="email" placeholder="recruiter@company.com" required class="w-full p-3 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:border-pharma-500">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-500">Subject</label>
+                            <input type="text" placeholder="Job Opportunity / Internship Inquiry" required class="w-full p-3 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:border-pharma-500">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-500">Detailed Context</label>
+                            <textarea rows="4" placeholder="Type your corporate proposal or discussion notes here..." required class="w-full p-3 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:border-pharma-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-pharma-500 hover:bg-pharma-600 text-white font-semibold text-sm transition-colors shadow-lg shadow-pharma-500/10">
+                            Transmit Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Map Integration Interface Platform -->
+            <div class="mt-8 rounded-2xl overflow-hidden glass p-2 h-64 shadow-md">
+                <iframe class="w-full h-full rounded-xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114277.29524021741!2d80.25059530467576!3d26.447204906932454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c4770b127c46f%3A0x1778302a9f57b4d5!2sKanpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1710000000000!3m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Recruiter Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h3 class="text-white text-lg font-bold">Kartikey | B.Pharm Graduate | Production & QA Aspirant</h3>
+            <p class="text-xs max-w-md mx-auto opacity-70">Dedicated to maintaining pharmaceutical standards, operational compliance frameworks, and industrial safety metrics.</p>
+            <div class="h-px bg-slate-800 max-w-sm mx-auto"></div>
+            <p class="text-xs opacity-50">&copy; 2026 Kartikey. Engineered for operational efficiency.</p>
+        </div>
+    </footer>
+
+    <!-- Functional Scripts Operations Framework -->
+    <script>
+        // Preloader Closer
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => preloader.remove(), 500);
+            startCounters();
+        });
+
+        // Theme Toggle Control
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Sticky Header & Back to Top Visibility Tracking
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                backToTop.classList.remove('hidden');
+            } else {
+                navbar.classList.remove('py-2');
+                backToTop.classList.add('hidden');
+            }
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Mobile Menu Toggling Action
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Typing Strings Array Execution Loop Engine
+        const words = ["B.Pharm Graduate", "Production Aspirant", "Quality Assurance Analyst"];
+        let wordIdx = 0, charIdx = 0, isDeleting = false;
+        const typedTitle = document.getElementById('typedTitle');
+
+        function typeEffect() {
+            const currentWord = words[wordIdx];
+            if (isDeleting) {
+                charIdx--;
+            } else {
+                charIdx++;
+            }
+            typedTitle.textContent = currentWord.substring(0, charIdx);
+
+            let speed = isDeleting ? 40 : 80;
+            if (!isDeleting && charIdx === currentWord.length) {
+                speed = 2000; // Hold at full word string end
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                wordIdx = (wordIdx + 1) % words.length;
+                speed = 400; // Pause before processing next string loop sequence
+            }
+            setTimeout(typeEffect, speed);
+        }
+        typeEffect();
+
+        // Counter Numbers Progression Triggers
+        function startCounters() {
+            document.querySelectorAll('[data-target]').forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const updateCount = () => {
+                    const increment = target / 40;
+                    if (count < target) {
+                        count += increment;
+                        counter.textContent = Math.ceil(count);
+                        setTimeout(updateCount, 25);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+    </script>
 </body>
 </html>
